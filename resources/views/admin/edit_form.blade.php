@@ -43,6 +43,7 @@
     let index = {{ count($form->fields) }};
 
     function addField() {
+           // console.log('hlo');
         const template = `
             <div class="field">
                 <label for="fields-${index}-label">Label:</label>
@@ -67,7 +68,9 @@
 
     document.addEventListener('change', function(event) {
         if (event.target && event.target.matches('select')) {
+               // console.log('hi');
             const index = event.target.id.split('-')[1];
+               // console.log('index',inex);
             if (event.target.value === 'dropdown') {
                 document.getElementById(`fields-${index}-options`).style.display = 'block';
             } else {

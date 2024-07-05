@@ -16,6 +16,7 @@ class AdminController extends Controller
     public function dashboard()
     {
         $forms = Form::all();
+        // echo"<pre>";print_r($forms);exit;
         return view('admin.dashboard', compact('forms'));
     }
 
@@ -68,7 +69,7 @@ class AdminController extends Controller
             'fields.*.type' => 'required|string|in:text,number,dropdown',
             'fields.*.options' => 'nullable|string',
         ]);
-
+     // echo"<pre>";print_r($validatedData);exit;
         $form->title = $request->input('title');
         $form->slug = \Str::slug($request->input('title'));
         $form->save();
@@ -97,6 +98,7 @@ class AdminController extends Controller
 
     public function deleteField(FormField $field)
     {
+         // echo"<pre>";print_r($field);exit;
         $field->delete();
         return redirect()->back()->with('success', 'Field deleted successfully!');
     }

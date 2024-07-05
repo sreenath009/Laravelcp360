@@ -40,6 +40,7 @@
     let index = 1;
 
     function addField() {
+    // console.log('hi');
         const template = `
             <div class="field">
                 <label for="fields-${index}-label">Label:</label>
@@ -63,9 +64,12 @@
     }
 
     document.addEventListener('change', function(event) {
+        // console.log('hlo');
         if (event.target && event.target.matches('select')) {
             const index = event.target.id.split('-')[1];
+            // console.log('index',index);
             if (event.target.value === 'dropdown') {
+                 // console.log('hi');
                 document.getElementById(`fields-${index}-options`).style.display = 'block';
             } else {
                 document.getElementById(`fields-${index}-options`).style.display = 'none';

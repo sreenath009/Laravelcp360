@@ -10,6 +10,7 @@ class FormController extends Controller
 {
     public function showFormBySlug($slug)
     {
+         // echo"<pre>";print_r($slug);exit;
         $form = Form::where('slug', $slug)->firstOrFail();
         $fields = $form->fields;
 
@@ -20,7 +21,7 @@ class FormController extends Controller
     {
         $form = Form::where('slug', $slug)->firstOrFail();
         $fields = $form->fields;
-
+// echo"<pre>";print_r($fields);exit;
         $data = [];
         foreach ($fields as $field) {
             $fieldName = 'field_' . $field->id;
@@ -29,7 +30,7 @@ class FormController extends Controller
             ]);
             $data[$field->label] = $request->input($fieldName);
         }
-
+// echo"<pre>";print_r($data);exit;
         FormSubmission::create([
             'form_id' => $form->id,
             'data' => json_encode($data),
