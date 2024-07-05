@@ -34,3 +34,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/forms/{slug}', [FormController::class, 'showFormBySlug'])->name('public.show_form');
 Route::post('/forms/{slug}/submit', [FormController::class, 'submitForm'])->name('public.submit_form');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
